@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Cars - AKH Autos</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <div class="nav-logo">
+                <h2>AKH Autos</h2>
+            </div>
+
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="cars.html" class="nav-link active">Our Cars</a></li>
+                <li><a href="booknow.html" class="nav-link">Book Now</a></li>
+                <li><a href="bookings.html" class="nav-link">View Bookings</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CAR FLEET -->
+    <section class="cars-section">
+        <div class="container">
+            <h2>Our Premium Fleet</h2>
+
+            <div class="car-categories">
+                <button class="category-btn active" data-category="all">All Cars</button>
+                <button class="category-btn" data-category="luxury">Luxury</button>
+                <button class="category-btn" data-category="suv">SUV</button>
+                <button class="category-btn" data-category="sedan">Sedan</button>
+            </div>
+
+            <div class="cars-grid" id="carsGrid">
+                <!-- Dynamic cars load here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AKH Autos. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

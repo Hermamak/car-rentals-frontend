@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Bookings - AKH Autos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h2>AKH Autos</h2>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="container" style="margin-top: 100px;">
+    <h2>All Bookings</h2>
+
+    <table id="bookingsTable" border="1" cellspacing="0" cellpadding="8">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Driver License</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Car ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data will be inserted here -->
+      </tbody>
+    </table>
+  </section>
+
+  <script>
+    const BACKEND_URL = "http://44.210.84.173/bookings";
+
+    async function loadBookings() {
+      try {
+        const res = await fetch(BACKEND_URL);
+        const data = await res.json();
+
+        const tbody = document.querySelector("#bookingsTable tbody");
+        tbody.innerHTML = "";
+
+        data.forEach(b => {
+          const row = `
+            <tr>
+              <td>${b.customerName}</td>
+              <td>${b.customerEmail}</td>
+              <td>${b.customerPhone}</td>
+              <td>${b.driverLicense}</td>
+              <td>${b.startDate}</td>
+              <td>${b.endDate}</td>
+              <td>${b.carId}</td>
+            </tr>
+          `;
+          tbody.innerHTML += row;
+        });
+
+      } catch (err) {
+        alert("Failed to load bookings");
+        console.error(err);
+      }
+    }
+
+    loadBookings();
+  </script>
+
+</body>
+</html>

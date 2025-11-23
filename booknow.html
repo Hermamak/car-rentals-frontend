@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Now - AKH Autos</title>
+
+    <!-- ✅ CSS -->
+    <!-- Use relative path for local testing; absolute path works on server root -->
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- External fonts and icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>AKH Autos</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="./index.html" class="nav-link">Home</a></li>
+                <li><a href="./cars.html" class="nav-link">Our Cars</a></li>
+                <li><a href="./book-now.html" class="nav-link active">Book Now</a></li>
+                <li><a href="./bookings.html" class="nav-link">View Bookings</a></li>
+                <li><a href="./index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BOOKING FORM -->
+    <section class="booking-section">
+        <div class="container">
+            <h2>Book Your Dream Car</h2>
+
+            <form class="booking-form" id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="carSelect">Select Car</label>
+                        <select id="carSelect" required>
+                            <option value="">Choose a vehicle</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pickupDate">Pickup Date</label>
+                        <input type="date" id="pickupDate" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="returnDate">Return Date</label>
+                        <input type="date" id="returnDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pickupLocation">Pickup Location</label>
+                        <select id="pickupLocation" required>
+                            <option value="">Select location</option>
+                            <option value="accra">Accra</option>
+                            <option value="kumasi">Kumasi</option>
+                            <option value="tamale">Tamale</option>
+                            <option value="takoradi">Takoradi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerName">Full Name</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerEmail">Email</label>
+                        <input type="email" id="customerEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerPhone">Phone Number</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="driverLicense">Driver’s License Number</label>
+                        <input type="text" id="driverLicense" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AKH Autos. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ✅ JS -->
+    <script src="./script.js"></script>
+</body>
+</html>
