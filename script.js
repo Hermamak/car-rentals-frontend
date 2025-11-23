@@ -1,7 +1,5 @@
 const API_URL = "http://3.224.121.119:3000";
 
-
-// DOM references
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const carsGrid = document.getElementById('carsGrid');
@@ -13,7 +11,7 @@ const bookingsTable = document.getElementById('bookingsTable');
 
 let carsData = [];
 
-// Mobile nav toggle 
+// Mobile navgation 
 if (hamburger && navMenu) {
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
@@ -28,7 +26,7 @@ if (hamburger && navMenu) {
   });
 }
 
-// Smooth scroll for anchor links
+// Smooth scroll forlinks
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
     const target = document.querySelector(anchor.getAttribute('href'));
@@ -48,7 +46,7 @@ async function fetchCarsFromBackend() {
   return await res.json();
 }
 
-// Load and render cars
+// Load cars
 async function loadCarsPage() {
   if (!carsGrid) return;
   carsGrid.innerHTML = `<p>Loading cars...</p>`;
@@ -70,6 +68,7 @@ function displayCars(category = 'all') {
     carsGrid.innerHTML = `<p>No cars available.</p>`;
     return;
   }
+  
   carsGrid.innerHTML = filtered.map(car => `
     <div class="car-card">
       <img src="${car.image}" alt="${escapeHtml(car.name)}" class="car-image">
@@ -77,12 +76,13 @@ function displayCars(category = 'all') {
         <h3 class="car-name">${escapeHtml(car.name)}</h3>
         <p class="car-category">${escapeHtml((car.category || '').toUpperCase())}</p>
         <p class="car-price">${escapeHtml(car.price || '')}</p>
+        <a href="booknow.html?carId=${car.id}" class="book-btn" style="display:block; text-align:center; margin-top:10px;">Book Now</a>
       </div>
     </div>
   `).join('');
 }
 
-//dropdown on book-now page
+// dropdown on book-now page
 function populateCarSelect() {
   if (!carSelect) return;
   carSelect.innerHTML = '<option value="">Choose a vehicle</option>';
@@ -117,7 +117,7 @@ if (categoryBtns && categoryBtns.length) {
   });
 }
 
-// Booking form submit handler (book-now page)
+// Booking form submi (book-now page)
 if (bookingForm) {
   bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -143,6 +143,14 @@ if (bookingForm) {
     if (!bookingData.customerName || !bookingData.customerEmail || !bookingData.startDate || !bookingData.endDate) {
       alert('Please fill all required fields.');
       return;
+    }
+
+    //Date Logic
+    const start = new Date(bookingData.startDate);
+    const end = new Date(bookingData.endDate);
+    if (end <= start) {
+        alert("Return date must be AFTER the pickup date.");
+        return;
     }
 
     try {
@@ -186,14 +194,13 @@ async function loadBookingsPage() {
     }
     bookingsTable.innerHTML = bookings.map(b => `
       <tr>
-        <td>${escapeHtml(b.id)}</td>
-        <td>${escapeHtml(b.carId)}</td>
         <td>${escapeHtml(b.customerName)}</td>
         <td>${escapeHtml(b.customerEmail)}</td>
         <td>${escapeHtml(b.customerPhone)}</td>
         <td>${escapeHtml(b.driverLicense)}</td>
         <td>${escapeHtml(b.startDate)}</td>
         <td>${escapeHtml(b.endDate)}</td>
+        <td>${escapeHtml(b.carId)}</td>
       </tr>
     `).join('');
   } catch (err) {
@@ -202,7 +209,6 @@ async function loadBookingsPage() {
   }
 }
 
-// On page load: run the relevant functions
 document.addEventListener('DOMContentLoaded', async () => {
   // if on cars page
   if (carsGrid) {
@@ -215,6 +221,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       carsData = await fetchCarsFromBackend(); // prefetch cars for dropdown
       populateCarSelect();
+
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const preSelectedCarId = urlParams.get('carId');
+      
+      if (preSelectedCarId && carSelect) {
+         // We set the value. If the car is booked or invalid, the dropdown won't change
+         carSelect.value = preSelectedCarId;
+      }
+
     } catch (err) {
       console.error('Error preloading cars for booking page:', err);
       if (carSelect) carSelect.innerHTML = `<option value="">Unable to load cars</option>`;
@@ -235,4 +251,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     // no-op
   }
 });
+
 
