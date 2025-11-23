@@ -3,56 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKH Autos - Car Rental</title>
+    <title>AKH Autos | Premium Car Rental</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
 
+    <!-- NAV -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>AKH Autos</h2>
+                <!-- Span allows us to color "Autos" differently in CSS -->
+                <h2>AKH <span>Autos</span></h2>
             </div>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="cars.html" class="nav-link">Our Cars</a></li>
-                <li><a href="bookings.html" class="nav-link">View Bookings</a></li>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="cars.html" class="nav-link">Our Fleet</a></li>
+                <li><a href="bookings.html" class="nav-link">My Bookings</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <!-- CTA Button in Menu -->
+                <li><a href="cars.html" class="btn btn-primary">Book Now</a></li>
             </ul>
         </div>
     </nav>
 
-    
+    <!-- HERO SECTION -->
     <header class="hero">
+        <!-- Overlay makes text readable over the image -->
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Find Your Perfect Ride</h1>
             <p>Affordable. Reliable. Comfortable.</p>
-
             <div class="hero-buttons">
-                <a href="cars.html" class="btn btn-primary">View Cars</a>
-                <a href="booknow.html" class="btn btn-secondary">Book Now</a>
+                <a href="cars.html" class="btn btn-hero">View Fleet</a>
             </div>
-        </div>
-
-        <div class="hero-image">
-            <img src="assets/carimagemainpage.avif" alt="Main car image">
         </div>
     </header>
 
-    <section id="about" class="about">
-        <!-- Your original about content here -->
+    <!-- FEATURES -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose AKH Autos?</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-car-side"></i></div>
+                    <h3>Premium Fleet</h3>
+                    <p>From luxury sedans to rugged SUVs, we have it all.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-wallet"></i></div>
+                    <h3>Affordable Rates</h3>
+                    <p>Competitive daily rates with no hidden fees.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-tools"></i></div>
+                    <h3>24/7 Support</h3>
+                    <p>We are always here to help you on the road.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- CONTACT SECTION -->
     <section id="contact" class="contact-section">
-        <!-- Your original contact content here -->
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+233 34 999 5620</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@akhautos.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Accra, Ghana</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>&copy; 2025 AKH Autos. +233349995620.  All rights reserved.
-        </p>
+        <div class="container">
+            <p>&copy; 2025 AKH Autos. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+
