@@ -1,4 +1,4 @@
-const API_URL = "http://3.224.121.119:3000";
+const API_URL = "https://car-rental-backend-1-r7ej.onrender.com";
 
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -251,5 +251,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // no-op
   }
 });
+
 
 
