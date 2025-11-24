@@ -1,0 +1,14 @@
+version: 1
+frontend:
+  phases:
+    # No actual build command needed for plain HTML/JS/CSS
+    preBuild:
+      commands: []
+    # No actual build command needed for plain HTML/JS/CSS
+    build:
+      commands: []
+  artifacts:
+    # This is the crucial line: it tells Amplify where to find the files
+    baseDirectory: /
+    files:
+      - '**/*'
